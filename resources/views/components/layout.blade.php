@@ -27,18 +27,18 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <x-nav-link href="/home" :active="request()->is('home')">Home</x-nav-link>
-              <x-nav-link href="/jobs" :active="request()->is('about')">Jobs</x-nav-link>
+              <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
               <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
    
             </div>
           </div>
         </div>
         <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
+          <div class="ml-4 flex items-center md:ml-6 space-x-4">
            
           @guest
             <x-nav-link href="/login" :active="request()->is('login')">Log In</x-nav-link>
-             <x-nav-link href="/register" :active="request()->is('register')"> Register</x-nav-link>
+            <x-nav-link href="/register" :active="request()->is('register')">Register</x-nav-link>
           @endguest 
           @auth
             <form method="POST" action="/logout">
