@@ -7,18 +7,22 @@ use App\Http\Controllers\SessionController;
 
 Route::view('/home', 'home');
 Route::view('/contact', 'contact');
-// Route::controller(JobController::class)->group(function (){
-// Route::get('/jobs', 'index'); 
-// Route::get('/jobs/create', 'create'); 
-// Route::get('/jobs/{job}',  'show'); 
-// Route::post('/jobs', 'store'); 
-// Route::get('/jobs/{job}/edit', 'edit');
-// Route::patch('/jobs/{job}', 'update'); 
-// Route::delete('/jobs/{job}', 'destroy'); 
+//Route::controller(JobController::class)->group(function (){
+Route::get('/jobs', [JobController::class, 'index']); 
+Route::get('/jobs/create', [JobController::class, 'create']); 
+Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
+Route::get('/jobs/{job}',[JobController::class, 'show']); 
+
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])
+   ->middleware('auth')
+   ->can('edit', 'job');
+
+Route::patch('/jobs/{job}', [JobController::class, 'update']); 
+Route::delete('/jobs/{job}', [JobController::class, 'destroy']);  
 // });
 
-Route::resource('jobs', JobController::class)->only(['index','show']);
-Route::resource('jobs', JobController::class)->except(['index','show'])->middleware('auth');
+//Route::resource('jobs', JobController::class)->only(['index','show']);
+//Route::resource('jobs', JobController::class)->except(['index','show'])->middleware('auth');
 //auth
 Route::get('/register',[RegisteredUserController::class, 'create']);
 Route::post('/register',[RegisteredUserController::class, 'store']);
