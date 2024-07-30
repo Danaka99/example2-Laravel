@@ -28,6 +28,7 @@ class JobPosted extends Mailable
     {
         return new Envelope(
             subject: 'Job Posted',
+            from: 'danakalakdineepa@gmail.com' 
         );
     }
 
@@ -37,7 +38,7 @@ class JobPosted extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.job-posted',
+            markdown: 'mail.job-posted',
         );
     }
 

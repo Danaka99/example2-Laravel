@@ -5,6 +5,13 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 
+Route::get('test', function(){
+   \Illuminate\Support\Facades\Mail::to('danakalakdineepa@gmail.com')->send(
+      new \App\Mail\JobPosted()
+   );
+   return 'Done'; 
+}); 
+
 Route::view('/home', 'home');
 Route::view('/contact', 'contact');
 //Route::controller(JobController::class)->group(function (){
