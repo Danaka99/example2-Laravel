@@ -1,4 +1,11 @@
+<h2>
+ {{ $job->title }}
+</h2>
 
+<p>
+    Congrats! Your job is now Live on your Website
+</p>
 
-The body of your message.
-
+<p>
+    <a href="{{ url('/jobs' . $job->id )}}">View Your Job Listing</a>
+</p>
