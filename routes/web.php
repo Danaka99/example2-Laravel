@@ -28,8 +28,10 @@ Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])
    ->middleware('auth')
    ->can('edit', 'job');
 
-Route::patch('/jobs/{job}', [JobController::class, 'update']); 
-Route::delete('/jobs/{job}', [JobController::class, 'destroy']);  
+Route::patch('/jobs/{job}', [JobController::class, 'update'])->middleware('auth')
+   ->can('edit', 'job'); 
+Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->middleware('auth')
+   ->can('edit', 'job');  
 // });
 
 //Route::resource('jobs', JobController::class)->only(['index','show']);
